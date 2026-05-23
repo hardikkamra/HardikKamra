@@ -88,8 +88,6 @@ export default function Home() {
           }
           metricValue={50}
           metricLabel="Projects"
-          ctaHeading="Explore my work."
-          ctaDescription="Let's build scalable financial systems together."
         />
       </div>
 
@@ -144,7 +142,7 @@ export default function Home() {
             Explore my work.
           </h2>
           <p className="text-zinc-400 text-lg md:text-xl font-medium tracking-wide max-w-lg mx-auto text-center mb-16">
-            Let's build scalable financial systems together.
+            Let&apos;s build scalable financial systems together.
           </p>
 
           <div className="w-full max-w-7xl mx-auto">
