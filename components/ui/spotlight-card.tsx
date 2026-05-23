@@ -167,6 +167,17 @@ const GlowCard: React.FC<GlowCardProps> = ({
       inset: -10px;
       border-width: 10px;
     }
+
+    @media (max-width: 767px) {
+      [data-glow]::before,
+      [data-glow]::after,
+      [data-glow] [data-glow] {
+        display: none !important;
+      }
+      [data-glow] {
+        border-color: transparent !important;
+      }
+    }
   `;
 
   return (
