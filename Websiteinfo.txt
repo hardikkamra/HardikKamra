@@ -1,0 +1,506 @@
+================================================================================
+  BHUVAN SONI — PORTFOLIO WEBSITE CONFIG
+  Design Reference: exodus.com
+  Prepared for: Bhuvan Soni | BCom Student | CMA US | Jaipur
+================================================================================
+
+
+────────────────────────────────────────────────────────────────────────────────
+ 1. BRAND NAME
+────────────────────────────────────────────────────────────────────────────────
+
+  Primary Name   : Bhuvan Soni
+  Stylized Name  : BHUVAN SONI  (or)  bhuvan.soni
+  Domain Idea    : bhuvansoni.com  |  bhuvan.finance  |  bhuvansonicma.com
+  Tagline Short  : Finance. Data. Growth.
+  Sub-brand      : BS (monogram logo, clean sans-serif, dual-letter mark)
+
+
+────────────────────────────────────────────────────────────────────────────────
+ 2. TAGLINE
+────────────────────────────────────────────────────────────────────────────────
+
+  Primary Tagline    : "Control Your Numbers. Shape Your Future."
+  Alternate 1        : "From Ledgers to Dashboards — Finance, Reimagined."
+  Alternate 2        : "Where Accounting Meets Analytics."
+  Meta Description   : Finance student, CMA US candidate, and data enthusiast
+                       from Jaipur — turning numbers into insights with Excel,
+                       Power BI, SQL, and SAP.
+  Twitter/OG Tag     : Bhuvan Soni | Finance & Data Portfolio
+
+
+────────────────────────────────────────────────────────────────────────────────
+ 3. ONE-LINER
+────────────────────────────────────────────────────────────────────────────────
+
+  "BCom student & CMA US candidate from Jaipur — skilled in Excel, Power BI,
+   SQL, and SAP, building a career at the intersection of finance and data."
+
+  (For hero subheading, break it into two lines:)
+  Line 1: "Finance student. Data learner."
+  Line 2: "CMA US Candidate from Jaipur."
+
+
+────────────────────────────────────────────────────────────────────────────────
+ 4. BRAND VOICE
+────────────────────────────────────────────────────────────────────────────────
+
+  Tone             : Confident, clear, minimal — like Exodus: no fluff,
+                     premium feel, every word earns its place.
+  Personality      : Ambitious but grounded, technical but accessible,
+                     young professional energy.
+  Writing Style    : Short punchy headlines, sentence-case body text,
+                     action verbs ("Build", "Analyze", "Transform").
+  Avoid            : Corporate jargon, passive voice, filler phrases like
+                     "I am a passionate..." or "I love working with..."
+  Inspiration      : Exodus.com — clean, dark, trustworthy, premium.
+  Voice Examples   :
+    ✓ "I turn raw data into decisions."
+    ✓ "Finance runs on numbers. I run on finance."
+    ✗ "I am a hardworking and dedicated student..."
+
+
+────────────────────────────────────────────────────────────────────────────────
+ 5. COLORS
+────────────────────────────────────────────────────────────────────────────────
+
+  (Inspired directly from exodus.com dark palette)
+
+  Background Primary   : #06050A   (near-black, Exodus's base bg)
+  Background Surface   : #0F0E17   (card/section bg)
+  Background Alt       : #13121C   (slightly lighter sections)
+
+  Accent Primary       : #8B5CF6   (purple — Exodus primary gradient base)
+  Accent Secondary     : #6D28D9   (deeper purple)
+  Accent Glow          : #A78BFA   (soft lavender highlight)
+  Accent Blue          : #3B82F6   (for data/tech feel — Power BI blue)
+
+  Gradient (Hero)      : linear-gradient(135deg, #8B5CF6 0%, #3B82F6 100%)
+  Gradient (Cards)     : linear-gradient(180deg, #1A1830 0%, #06050A 100%)
+  Gradient (CTA)       : linear-gradient(90deg, #7C3AED, #2563EB)
+
+  Text Primary         : #FFFFFF
+  Text Secondary       : #A1A1AA   (zinc-400 equivalent)
+  Text Muted           : #52525B   (zinc-600)
+  Text Link            : #A78BFA
+
+  Border/Stroke        : rgba(255,255,255,0.08)
+  Card Border Glow     : rgba(139,92,246,0.3)
+
+  Theme Color (meta)   : #06050A
+
+
+────────────────────────────────────────────────────────────────────────────────
+ 6. NAVIGATION MENU
+────────────────────────────────────────────────────────────────────────────────
+
+  Style     : Sticky top navbar, transparent → blur-glass on scroll
+              Logo left | Nav links center | CTA button right
+              Identical layout to Exodus navbar
+
+  Logo      : "BS" monogram + "Bhuvan Soni" wordmark
+
+  Nav Items (Desktop):
+  ┌─────────────────────────────────────────────────────────────────┐
+  │  About ▾    Skills ▾    Projects    Education    Contact        │
+  │                                             [ Hire Me → ]       │
+  └─────────────────────────────────────────────────────────────────┘
+
+  Dropdown — About:
+    • Who I Am
+    • My Journey
+    • Resume / CV (PDF download)
+
+  Dropdown — Skills:
+    • Microsoft Excel
+    • Power BI
+    • SQL
+    • SAP
+    • CMA US (In Progress)
+
+  CTA Button: "Hire Me" or "Get In Touch" — pill shape, gradient bg
+  Mobile: Hamburger → full-screen slide-in menu (Exodus mobile style)
+
+
+────────────────────────────────────────────────────────────────────────────────
+ 7. HERO SECTION
+────────────────────────────────────────────────────────────────────────────────
+
+  Layout    : Full-viewport, dark background with radial glow/gradient
+              behind heading text (exactly like Exodus hero)
+
+  Badge     : 🎓 "BCom Student · CMA US Candidate · Class of 2027"
+              (small pill badge with lock/shield icon replaced by grad cap)
+
+  Headline  : "Finance &      (line break with gradient text color)
+               Data Portfolio"
+
+  Sub-text  : "Analytical. Driven. Detail-oriented.
+               Building expertise in Excel, Power BI, SQL, and SAP
+               from Jaipur, India."
+
+  CTA Buttons:
+    Primary  → [ ↓ View My Work ]     (gradient fill, pill shape)
+    Secondary→ [ Available for Internship ]  (ghost/outline style)
+
+  Small print: "Open to opportunities in Finance, Accounting & Data Analytics"
+
+  Trust Badge Row (below CTAs):
+    • 90% in Class XII (Alpha International Academy)
+    • BCom — Jaipur (Ongoing)
+    • CMA US — In Progress
+    • Skills: Excel · Power BI · SQL · SAP
+
+  Background: Dark radial gradient with subtle purple/blue glow,
+              faint hexagon grid overlay (like Exodus hero-background.jpg)
+              Optional: animated floating orbs / shader gradient
+
+
+────────────────────────────────────────────────────────────────────────────────
+ 8. SHADERS / BACKGROUNDS
+────────────────────────────────────────────────────────────────────────────────
+
+  (Mimicking Exodus's layered background system)
+
+  Global Base       : #06050A solid fill across all sections
+  Hero Shader       : Large radial gradient centered behind heading
+                      → rgba(139,92,246,0.25) core fading to transparent
+                      → Second layer: rgba(59,130,246,0.15) offset right
+  Section Dividers  : Subtle top/bottom gradient fades (section bleed)
+  Bento Cards Glow  : Per-card corner gradient blobs (purple/blue soft glow)
+                      → bento-gradient-bottom-right style
+  CTA Section Glow  : Full-width background-glow.jpg equivalent
+                      → Curved peak light burst from bottom-center
+  Hexagon Pattern   : SVG hexagon tile overlay at 5% opacity — decorative
+  Scroll Parallax   : Background layers move at 0.3x scroll speed
+  Blur Glass Effect : backdrop-filter: blur(12px) on sticky nav + modals
+
+
+────────────────────────────────────────────────────────────────────────────────
+ 9. SCROLL AREAS / PAGE SECTIONS (in order)
+────────────────────────────────────────────────────────────────────────────────
+
+  Section 1 — HERO
+    Full viewport. Gradient bg. Name + tagline + CTA + trust badges.
+
+  Section 2 — ABOUT ME  (parallax scroll reveal)
+    Two-column: Left = headshot/avatar, Right = short bio paragraph
+    "18 years old. BCom student at [University name], Jaipur.
+     CMA US candidate. 90% in Class XII from Alpha International Academy.
+     Obsessed with finance, data, and building skills that matter."
+
+  Section 3 — SKILLS (scroll-triggered cards)
+    Bento grid layout (exactly like Exodus "Explore the Power" section)
+    Each skill = card with icon + title + 1-line description
+
+  Section 4 — PROJECTS / WORK (horizontal scroll or grid)
+    Showcase of dashboards, spreadsheets, SQL queries, SAP reports
+
+  Section 5 — EDUCATION & CERTIFICATIONS
+    Timeline layout. Cards with institution, year, achievement.
+
+  Section 6 — TOOLS I USE
+    Icon strip / logo row (Excel, Power BI, SQL, SAP) — clean dark bg
+
+  Section 7 — FAQ  (Exodus-style accordion)
+    Common recruiter questions answered
+
+  Section 8 — CTA / CONTACT
+    Full-width dark section with glow burst background
+    Headline + "Let's Connect" button + email form
+
+  Section 9 — FOOTER
+    4-column links + social icons + copyright
+
+
+────────────────────────────────────────────────────────────────────────────────
+ 10. FEATURES SECTION
+────────────────────────────────────────────────────────────────────────────────
+
+  Title      : "Explore My Skillset"
+  Sub-label  : "In-Depth Look" (with gradient icon — mirroring Exodus)
+
+  BENTO GRID CARDS (6 cards, 2–3 column layout):
+
+  Card 1 — Microsoft Excel
+    Label    : "Data Manipulation"
+    Headline : "Excel expertise, real-world ready"
+    Body     : Pivot tables, VLOOKUP/XLOOKUP, financial models,
+               dashboards, data cleaning — built from practice.
+    Icon     : Grid/table icon
+
+  Card 2 — Power BI
+    Label    : "Visual Analytics"
+    Headline : "Turning data into visual stories"
+    Body     : Interactive dashboards, DAX formulas, KPI reporting,
+               business intelligence for finance use cases.
+    Icon     : Bar chart icon
+
+  Card 3 — SQL
+    Label    : "Database Querying"
+    Headline : "Ask the right questions of your data"
+    Body     : SELECT, JOIN, GROUP BY, subqueries — querying structured
+               databases with precision and logic.
+    Icon     : Database/code icon
+
+  Card 4 — SAP
+    Label    : "ERP Systems"
+    Headline : "Enterprise-level finance systems"
+    Body     : Learning SAP fundamentals — the backbone of corporate
+               finance and accounting operations.
+    Icon     : Network/server icon
+
+  Card 5 — CMA US (In Progress)
+    Label    : "Certification"
+    Headline : "CMA US — Certified Management Accountant"
+    Body     : Currently pursuing CMA US — covering financial planning,
+               analysis, control, and decision support.
+    Icon     : Shield/award icon
+
+  Card 6 — Academic Foundation
+    Label    : "Education"
+    Headline : "Strong academic foundation"
+    Body     : 90% in Class XII · BCom (ongoing) · Jaipur, Rajasthan
+               Alpha International Academy alumnus.
+    Icon     : Graduation cap icon
+
+
+────────────────────────────────────────────────────────────────────────────────
+ 11. PRICING SECTION → ADAPTED AS "OPEN TO OPPORTUNITIES"
+────────────────────────────────────────────────────────────────────────────────
+
+  (Exodus has no pricing but has a trust/value section — adapted as
+   "What I Offer" / "Opportunity Tiers" for recruiters & collaborators)
+
+  Title   : "What I Bring to the Table"
+  Layout  : 3-column cards (like pricing tiers, without price tags)
+
+  Tier 1 — Internship Ready
+    Badge     : "Available Now"
+    Ideal for : Finance / Accounting firms, CA offices, NBFCs
+    Offers    :
+      ✓ Excel-based financial modeling
+      ✓ Data entry & reconciliation
+      ✓ Basic reporting & dashboards
+      ✓ Eager to learn, fast onboarder
+    CTA       : [ Reach Out ]
+
+  Tier 2 — Project Collaboration
+    Badge     : "Open to Work"
+    Ideal for : Startups, student teams, consultancies
+    Offers    :
+      ✓ Power BI dashboard creation
+      ✓ SQL data analysis
+      ✓ Financial data interpretation
+      ✓ CMA US theoretical grounding
+    CTA       : [ Let's Connect ]
+
+  Tier 3 — Long-Term Role (Post-Graduation)
+    Badge     : "Future Ready"
+    Ideal for : MNCs, Big 4, financial services
+    Offers    :
+      ✓ Full SAP + ERP fluency (in progress)
+      ✓ CMA US certified (expected)
+      ✓ End-to-end financial reporting
+      ✓ Data-driven decision making
+    CTA       : [ Stay in Touch ]
+
+
+────────────────────────────────────────────────────────────────────────────────
+ 12. CALLS TO ACTION
+────────────────────────────────────────────────────────────────────────────────
+
+  Primary CTA (Hero):
+    Text     : "View My Work"
+    Style    : Gradient pill button (purple → blue), with arrow icon
+    Action   : Smooth scroll to Projects section
+
+  Secondary CTA (Hero):
+    Text     : "Available for Internship"
+    Style    : Ghost/outline button, white border
+    Action   : Smooth scroll to Contact section
+
+  Mid-page CTA (after Skills section):
+    Text     : "Download My Resume"
+    Style    : Solid white pill button, dark text
+    Action   : Opens PDF resume in new tab
+
+  Feature Section CTA:
+    Text     : "See My Projects"
+    Style    : Gradient button, smaller size
+    Action   : Links to Projects section
+
+  Final CTA (bottom of page):
+    Headline : "Control your career journey — let's connect today"
+    Sub-text : "Open to internships, freelance projects, and full-time
+                opportunities in finance and data analytics."
+    Button   : "Get In Touch →"
+    Style    : Large gradient pill, centered on glow background
+
+  Floating CTA (mobile):
+    Sticky bottom bar → "Hire Me" button
+
+
+────────────────────────────────────────────────────────────────────────────────
+ 13. CARDS
+────────────────────────────────────────────────────────────────────────────────
+
+  Global Card Style:
+    Background   : #0F0E17 (dark surface)
+    Border       : 1px solid rgba(255,255,255,0.08)
+    Border Radius: 16px (rounded-2xl)
+    Padding      : 24px
+    Shadow       : 0 0 40px rgba(139,92,246,0.1)
+    Hover State  : border-color → rgba(139,92,246,0.4), slight lift
+    Transition   : 0.3s ease
+
+  Skill Cards (Bento Grid):
+    Size       : Varies — some 1-wide, some 2-wide (like Exodus bento)
+    Has        : Small label pill (top-left) + icon + headline + body
+    Corner glow: Gradient blur blob in bottom corner
+
+  Education Cards:
+    Layout     : Horizontal card — left icon/logo, right text
+    Content    : Institution | Year | Achievement | Status badge
+
+    Card A     : Alpha International Academy · Class XII · 90% ✓
+    Card B     : [University Name], Jaipur · BCom · In Progress 🎓
+    Card C     : CMA US · ICMA — In Progress 📋
+
+  Project Cards:
+    Layout     : Image/screenshot top + title + tags + link
+    Tags       : e.g., [Excel] [Power BI] [SQL]
+    Hover      : Scale 1.02 + glow border
+
+  FAQ Cards (Accordion):
+    Closed     : Question + chevron down
+    Open       : Expands smoothly, answer in text-secondary color
+
+    Sample FAQs:
+    Q: What tools are you proficient in?
+    A: Excel (advanced), Power BI (intermediate), SQL (learning),
+       SAP (basics). Currently pursuing CMA US certification.
+
+    Q: Are you available for internships?
+    A: Yes — actively looking for finance, accounting, or data analytics
+       internships in Jaipur or remote.
+
+    Q: What is your academic background?
+    A: 90% in Class XII from Alpha International Academy, Jaipur.
+       Currently pursuing BCom. Also enrolled in CMA US.
+
+    Q: Can you work on freelance projects?
+    A: Yes — Excel dashboards, Power BI reports, and SQL-based
+       data analysis projects are areas I can contribute.
+
+    Q: What industries are you targeting?
+    A: Financial services, consulting, Big 4 accounting firms, fintech,
+       and corporate finance departments.
+
+
+────────────────────────────────────────────────────────────────────────────────
+ 14. FOOTER
+────────────────────────────────────────────────────────────────────────────────
+
+  Layout   : Dark footer, 4 columns + newsletter row above + bottom bar
+             (mirrors Exodus footer exactly)
+
+  Newsletter Row (top of footer):
+    Text   : "Stay updated on my projects and certifications."
+    Input  : Email field + "Subscribe" button
+    Note   : "I'll only send relevant updates. Unsubscribe anytime."
+
+  Column 1 — About
+    • Who I Am
+    • My Journey
+    • Resume (PDF)
+
+  Column 2 — Skills
+    • Excel
+    • Power BI
+    • SQL
+    • SAP
+    • CMA US
+
+  Column 3 — Work
+    • Projects
+    • Dashboards
+    • GitHub (if applicable)
+    • Certifications
+
+  Column 4 — Contact
+    • Email Me
+    • LinkedIn
+    • Instagram
+    • Location: Jaipur, Rajasthan, India
+
+  Logo Row:
+    "Bhuvan Soni" wordmark (left)
+
+  Social Icons (right, pill-style like Exodus):
+    • LinkedIn  → linkedin.com/in/bhuvansoni
+    • GitHub    → github.com/bhuvansoni (if applicable)
+    • Instagram → personal or finance content
+    • Email     → mailto link
+
+  Bottom Bar:
+    Left  : "Copyright © 2025 Bhuvan Soni. All rights reserved."
+    Right : Privacy Policy · Terms
+
+  Disclaimer (small text, like Exodus footer legal text):
+    "This portfolio is for informational purposes only and represents
+     my academic work and learning journey. All projects shown are
+     personal or academic in nature."
+
+  Bottom Legal Links:
+    • Privacy Policy
+    • Terms of Use
+
+
+================================================================================
+ DESIGN IMPLEMENTATION NOTES
+================================================================================
+
+  Framework       : Next.js (recommended — same as Exodus)
+  Styling         : Tailwind CSS + custom CSS variables
+  Animations      : Framer Motion (scroll reveals, card hovers)
+  Fonts           : Inter or Geist Sans (clean, modern — Exodus-style)
+  Icons           : Lucide Icons or custom SVG gradient icons
+  Images          : WebP format, lazy-loaded
+  Dark Mode       : Default dark only (no toggle needed — always dark)
+  Responsive      : Mobile-first, same breakpoints as Exodus
+
+  Key Exodus Design Patterns to Copy:
+  1.  Sticky nav with blur glass on scroll
+  2.  Hero with large centered heading + gradient text on key word
+  3.  "Trusted by..." badge pill above hero headline
+  4.  Scroll-triggered fade-in for each section
+  5.  Bento grid for features (mixed card sizes)
+  6.  Purple/blue gradient on all interactive elements
+  7.  Hexagon decorative elements in hero + CTA bg
+  8.  Radial glow blobs behind CTA section
+  9.  FAQ accordion section
+  10. 4-column footer with newsletter + social icons
+
+
+================================================================================
+ PERSONAL INFO REFERENCE (for developer)
+================================================================================
+
+  Full Name       : Bhuvan Soni
+  Age             : 18
+  City            : Jaipur, Rajasthan, India
+  Education       : BCom — Ongoing
+  School          : Alpha International Academy, Jaipur
+  Class XII Score : 90%
+  Certification   : CMA US — In Progress (ICMA)
+  Tools Learning  : Microsoft Excel, Power BI, SQL, SAP
+  Open To         : Finance internships, data analytics projects,
+                    accounting roles, remote/hybrid opportunities
+  Target Sectors  : Finance, Accounting, Consulting, Fintech, Big 4
+
+================================================================================
+  END OF CONFIG FILE
+  Designed with Exodus.com as reference — bhuvansoni.com (proposed)
+================================================================================
+
