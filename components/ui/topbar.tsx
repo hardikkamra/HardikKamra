@@ -127,7 +127,7 @@ export function Topbar() {
           </Popover>
           <div className="flex items-center gap-6">
             <a href="#home" className="font-bold text-xl tracking-tighter text-white hover:text-white/90">
-              Bhuvan.
+              Riddhi-tg.
             </a>
             
             <div className="hidden md:flex justify-center flex-1">

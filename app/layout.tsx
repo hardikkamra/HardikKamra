@@ -2,12 +2,12 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Bhuvan Soni — Finance & Data Portfolio",
-  description: "Finance student, CMA US candidate, and data enthusiast from Jaipur. Expertise in Excel, Power BI, SQL, and SAP.",
-  keywords: ["finance", "data analytics", "CMA US", "Power BI", "SQL", "SAP", "Bhuvan Soni"],
+  title: "Riddhi-tg — Web3 & AI Portfolio",
+  description: "Software Engineer, Machine Learning candidate, and GenAI enthusiast from San Francisco. Expertise in React, Next.js, Solidity, and Web3.",
+  keywords: ["web3", "machine learning", "GenAI", "React", "Next.js", "Solidity", "Riddhi-tg"],
   openGraph: {
-    title: "Bhuvan Soni — Finance & Data Portfolio",
-    description: "Finance student, CMA US candidate, and data enthusiast from Jaipur. Expertise in Excel, Power BI, SQL, and SAP.",
+    title: "Riddhi-tg — Web3 & AI Portfolio",
+    description: "Software Engineer, Machine Learning candidate, and GenAI enthusiast from San Francisco. Expertise in React, Next.js, Solidity, and Web3.",
     type: "website",
   },
 };

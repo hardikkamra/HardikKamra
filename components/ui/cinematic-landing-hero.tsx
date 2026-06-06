@@ -146,8 +146,8 @@ export interface CinematicHeroProps extends React.HTMLAttributes<HTMLDivElement>
 }
 
 export function CinematicHero({
-  brandName = "Bhuvan.",
-  tagline1 = "Control your numbers,",
+  brandName = "Riddhi-tg.",
+  tagline1 = "Data that speaks",
   tagline2 = "shape your future.",
   cardHeading = "Finance & Data Architecture.",
   cardDescription,

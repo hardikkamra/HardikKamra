@@ -130,8 +130,8 @@ export function Header() {
       <nav className="mx-auto flex h-14 w-full max-w-5xl items-center justify-between px-4">
         <div className="flex items-center gap-5">
           <a href="#" className="hover:bg-accent rounded-md p-2 font-bold text-lg tracking-tight flex items-center gap-2">
-            <div className="bg-gradient-to-r from-violet-600 to-blue-500 text-white rounded px-1.5 py-0.5 text-sm font-black">BS</div>
-            <span>Bhuvan Soni</span>
+            <div className="bg-gradient-to-r from-violet-600 to-blue-500 text-white rounded px-1.5 py-0.5 text-sm font-black">RT</div>
+            <span>Riddhi-tg</span>
           </a>
           <NavigationMenu className="hidden md:flex">
             <NavigationMenuList>
