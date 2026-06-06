@@ -2,11 +2,11 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Riddhi-tg — Web3 & AI Portfolio",
+  title: "Vidhyashri — Web3 & AI Portfolio",
   description: "Software Engineer, Machine Learning candidate, and GenAI enthusiast from San Francisco. Expertise in React, Next.js, Solidity, and Web3.",
-  keywords: ["web3", "machine learning", "GenAI", "React", "Next.js", "Solidity", "Riddhi-tg"],
+  keywords: ["web3", "machine learning", "GenAI", "React", "Next.js", "Solidity", "Vidhyashri"],
   openGraph: {
-    title: "Riddhi-tg — Web3 & AI Portfolio",
+    title: "Vidhyashri — Web3 & AI Portfolio",
     description: "Software Engineer, Machine Learning candidate, and GenAI enthusiast from San Francisco. Expertise in React, Next.js, Solidity, and Web3.",
     type: "website",
   },
