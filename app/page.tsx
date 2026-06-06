@@ -77,7 +77,7 @@ export default function Home() {
       {/* ── SECTION 1: CINEMATIC HERO ────────────────────────────────────────── */}
       <div id="home">
         <CinematicHero
-          brandName="Vidhyashri."
+          brandName="Cibi."
           tagline1="Data that speaks,"
           tagline2="louder than words."
           cardHeading="Finance & Data Architecture."

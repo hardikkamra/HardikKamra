@@ -103,7 +103,7 @@ export function AuraLanding() {
           transition={{ delay: 0.3, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           className="text-5xl md:text-[5.5rem] lg:text-[7rem] font-semibold tracking-tight leading-[0.9] flex flex-col items-center"
         >
-          <span className="text-white">Vidhyashri.</span>
+          <span className="text-white">Cibi.</span>
           <span 
             className="animate-shiny mt-4 md:mt-6 pb-2"
             style={{
