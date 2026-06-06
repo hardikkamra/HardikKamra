@@ -59,7 +59,7 @@ const skillsItems = [
   {
     title: "Strong academic foundation",
     meta: "Education",
-    description: "90% in Class XII · BCom (ongoing) · Jaipur. Alpha International Academy alumnus.",
+    description: "90% in Class XII · BCom (ongoing) · Jaipur. SKS scool alumnus.",
     icon: <GraduationCap className="w-5 h-5 text-rose-400" />,
     status: "Ongoing",
     tags: ["BCom", "Academics"]
