@@ -186,7 +186,7 @@ export function CinematicHero({
   const mockupRef = useRef<HTMLDivElement>(null);
   const requestRef = useRef<number>(0);
 
-  const summaryText = "Results-driven Finance Professional with 5+ years of progressive experience in end-to-end accounting, GST & TDS compliance, and financial reporting across the Telecom and Wellness sectors. Proven track record of improving process efficiency, maintaining a zero-penalty compliance record, and driving cash flow improvements through data-driven insights. Proficient in Tally Prime, Tally ERP 9, Busy 2.1, and Advanced MS Excel.";
+  const summaryText = "Detail-oriented Finance & Accounting Professional with 5+ years of experience managing full-cycle AP/AR operations, automated financial reporting, and statutory compliance within the telecom and wellness sectors. Proven track record of improving monthly cash flow by 10% and maintaining a 100% error-free, zero-penalty record for all GST and TDS filings. Expert user of Tally Prime, Busy and MS Excel to accelerate reporting workflows.";
   const summaryWords = summaryText.split(" ");
 
   const storySteps = [
