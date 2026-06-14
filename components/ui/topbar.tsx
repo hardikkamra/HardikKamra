@@ -201,7 +201,7 @@ export function Topbar() {
             <a href="/Hardik_Kamra_Resume_Updated.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
           </Button>
           <Button asChild size="sm" className="text-sm bg-white text-black hover:bg-white/90">
-            <a href="mailto:hardikkamra1997@gmail.com">Let's Talk</a>
+            <a href="mailto:hardikkamra1997@gmail.com">Let&apos;s Talk</a>
           </Button>
         </div>
       </div>
