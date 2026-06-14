@@ -76,16 +76,6 @@ export default function Home() {
           brandName="HK."
           tagline1="Compliance that protects,"
           tagline2="numbers that grow."
-          nextTitle1=""
-          nextTitle2=""
-          cardHeading="Account Executive & Finance Professional."
-          cardDescription={
-            <>
-              <span className="text-white font-semibold">5+ years of proven expertise</span> in GST &amp; TDS compliance, full-cycle accounting, and financial reporting across Telecom &amp; Wellness sectors.
-            </>
-          }
-          metricValue={99}
-          metricLabel="Invoice Accuracy %"
         />
       </div>
 
