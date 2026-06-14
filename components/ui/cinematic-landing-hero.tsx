@@ -538,7 +538,7 @@ export function CinematicHero({
                 {/* Floating Glass Badges mapped absolutely */}
                 {storySteps.map((step, index) => (
                   <React.Fragment key={index}>
-                    <div className={`step-badge step-badge-${index} absolute flex top-6 lg:top-12 left-[-15px] lg:left-[-80px] floating-ui-badge rounded-xl lg:rounded-2xl p-3 lg:p-4 items-center gap-3 lg:gap-4 z-30 min-w-[160px] lg:min-w-[190px] opacity-0 invisible`}>
+                    <div className={`step-badge step-badge-${index} absolute flex top-6 lg:top-12 left-[-15px] lg:left-[-130px] xl:left-[-160px] floating-ui-badge rounded-xl lg:rounded-2xl p-3 lg:p-4 items-center gap-3 lg:gap-4 z-30 min-w-[160px] lg:min-w-[190px] opacity-0 invisible`}>
                       <div className="w-8 h-8 lg:w-10 lg:h-10 rounded-full bg-white/5 flex items-center justify-center border border-white/5 shadow-inner flex-shrink-0">
                         <span className="text-base lg:text-xl drop-shadow-lg" aria-hidden="true">{step.badge1Icon}</span>
                       </div>
@@ -548,7 +548,7 @@ export function CinematicHero({
                       </div>
                     </div>
 
-                    <div className={`step-badge step-badge-${index} absolute flex bottom-12 lg:bottom-20 right-[-15px] lg:right-[-80px] floating-ui-badge rounded-xl lg:rounded-2xl p-3 lg:p-4 items-center gap-3 lg:gap-4 z-30 min-w-[160px] lg:min-w-[190px] opacity-0 invisible`}>
+                    <div className={`step-badge step-badge-${index} absolute flex bottom-12 lg:bottom-20 right-[-15px] lg:right-[-130px] xl:right-[-160px] floating-ui-badge rounded-xl lg:rounded-2xl p-3 lg:p-4 items-center gap-3 lg:gap-4 z-30 min-w-[160px] lg:min-w-[190px] opacity-0 invisible`}>
                       <div className="w-8 h-8 lg:w-10 lg:h-10 rounded-full bg-white/5 flex items-center justify-center border border-white/5 shadow-inner flex-shrink-0">
                         <span className="text-base lg:text-lg drop-shadow-lg" aria-hidden="true">{step.badge2Icon}</span>
                       </div>

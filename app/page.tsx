@@ -104,7 +104,7 @@ export default function Home() {
 
         {/* ── SECTION 3: EXPLORE MY WORK (CTA & SKILLS) ────────────────────────── */}
         <div id="skills" className="flex flex-col items-center justify-center text-center w-full px-4 mb-4 relative z-10 pt-10">
-          <h2 className="text-4xl md:text-5xl lg:text-7xl font-bold tracking-tighter mb-6 text-transparent bg-clip-text bg-gradient-to-b from-white to-zinc-500 drop-shadow-sm">
+          <h2 className="text-4xl md:text-5xl lg:text-7xl font-bold tracking-tighter mb-6 text-transparent bg-clip-text bg-gradient-to-b from-white to-zinc-500 drop-shadow-sm pb-2">
             Explore my work.
           </h2>
           <p className="text-zinc-400 text-lg md:text-xl font-medium tracking-wide max-w-lg mx-auto text-center mb-16">
