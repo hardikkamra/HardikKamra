@@ -1,68 +1,65 @@
 'use client';
 
-import { useEffect } from 'react';
-import { motion } from 'framer-motion';
 import { CinematicHero } from '@/components/ui/cinematic-landing-hero';
 import { CinematicFooter } from '@/components/ui/motion-footer';
 import { ContainerScroll } from '@/components/ui/container-scroll-animation';
-import { WebGLShader } from '@/components/ui/web-gl-shader';
+import { CVDashboard } from '@/components/ui/cv-dashboard';
 import { Topbar } from '@/components/ui/topbar';
 import { BentoGrid } from '@/components/ui/bento-grid';
 import { TableProperties, BarChart3, Database, Network, ShieldCheck, GraduationCap } from "lucide-react";
-import { cn } from '@/lib/utils';
 
 const skillsItems = [
   {
-    title: "Excel expertise, real-world ready",
-    meta: "Data Manipulation",
-    description: "Pivot tables, VLOOKUP/XLOOKUP, financial models, dashboards, data cleaning - built from practice.",
-    icon: <TableProperties className="w-5 h-5 text-emerald-400" />,
-    status: "Advanced",
-    tags: ["Modeling", "Dashboards"],
+    title: "GST & TDS: Zero-Penalty Track Record",
+    meta: "Statutory Compliance",
+    description: "End-to-end GST reconciliation, TDS computation, and 100% deadline adherence across 5+ years — zero penalties ever filed.",
+    icon: <ShieldCheck className="w-5 h-5 text-emerald-400" />,
+    status: "Expert",
+    tags: ["GST", "TDS"],
     colSpan: 2,
     hasPersistentHover: true
   },
   {
-    title: "Turning data into visual stories",
-    meta: "Visual Analytics",
-    description: "Interactive dashboards, DAX formulas, KPI reporting, business intelligence for finance.",
-    icon: <BarChart3 className="w-5 h-5 text-blue-400" />,
-    status: "Intermediate",
-    tags: ["Power BI", "DAX"]
+    title: "Tally Prime & ERP Systems",
+    meta: "Accounting Software",
+    description: "Full-cycle AP/AR management, bank reconciliation, payroll, and month-end closing in Tally Prime, Tally ERP 9, and Busy 2.1.",
+    icon: <Network className="w-5 h-5 text-blue-400" />,
+    status: "Advanced",
+    tags: ["Tally Prime", "ERP"]
   },
   {
-    title: "Ask the right questions of your data",
-    meta: "Database Querying",
-    description: "SELECT, JOIN, GROUP BY, subqueries - querying structured databases with precision and logic.",
-    icon: <Database className="w-5 h-5 text-purple-400" />,
-    status: "Learning",
-    tags: ["SQL", "Querying"]
+    title: "Advanced MS Excel",
+    meta: "Data & Reporting",
+    description: "Expense sheets, aging analysis, asset registers, and financial models — 20% faster report generation through workflow automation.",
+    icon: <TableProperties className="w-5 h-5 text-purple-400" />,
+    status: "Advanced",
+    tags: ["Excel", "Automation"]
   },
   {
-    title: "Enterprise-level finance systems",
-    meta: "ERP Systems",
-    description: "Learning SAP fundamentals - the backbone of corporate finance and accounting operations.",
-    icon: <Network className="w-5 h-5 text-indigo-400" />,
-    status: "Basics",
-    tags: ["SAP", "ERP"],
+    title: "Cash Flow & AR Optimization",
+    meta: "Financial Management",
+    description: "Achieved 10% improvement in monthly cash inflow by optimizing receivables aging analysis and structured collection follow-up.",
+    icon: <BarChart3 className="w-5 h-5 text-indigo-400" />,
+    status: "Proven",
+    tags: ["Cash Flow", "Receivables"],
     colSpan: 2
   },
   {
-    title: "CMA US - Certified Management Acct.",
-    meta: "Certification",
-    description: "Pursuing CMA US - covering financial planning, analysis, control, and decision support.",
-    icon: <ShieldCheck className="w-5 h-5 text-amber-400" />,
-    status: "In Progress",
-    tags: ["Finance", "Control"],
+    title: "High-Volume Invoice Processing",
+    meta: "Accounts Payable/Receivable",
+    description: "Processed invoices for 100+ clients with 99% accuracy — managed full AP/AR cycles for 50+ vendors with timely disbursements.",
+    icon: <Database className="w-5 h-5 text-amber-400" />,
+    status: "Expert",
+    tags: ["Invoicing", "AP/AR"],
     colSpan: 2
   },
   {
-    title: "Strong academic foundation",
+    title: "Academic & Certified Foundation",
     meta: "Education",
-    description: "90% in Class XII · BCom (ongoing) · Jaipur. SKS scool alumnus.",
+    description: "BSc General (IGNOU) · Diploma in Computer Applications · Accounting & Stock Management Certified · LinkedIn Learning Accounting.",
     icon: <GraduationCap className="w-5 h-5 text-rose-400" />,
-    status: "Ongoing",
-    tags: ["BCom", "Academics"]
+    status: "Certified",
+    tags: ["BSc", "Certifications"]
   }
 ];
 
@@ -72,77 +69,56 @@ export default function Home() {
       <div className="absolute top-0 inset-x-0 z-50">
         <Topbar />
       </div>
-      <WebGLShader />
 
       {/* ── SECTION 1: CINEMATIC HERO ────────────────────────────────────────── */}
       <div id="home">
         <CinematicHero
-          brandName="Cibi."
-          tagline1="Data that speaks,"
-          tagline2="louder than words."
-          cardHeading="Finance & Data Architecture."
+          brandName="HK."
+          tagline1="Compliance that protects,"
+          tagline2="numbers that grow."
+          nextTitle1=""
+          nextTitle2=""
+          cardHeading="Account Executive & Finance Professional."
           cardDescription={
             <>
-              <span className="text-white font-semibold">Bridging the gap</span> between raw data and actionable financial insights with robust models and interactive dashboards.
+              <span className="text-white font-semibold">5+ years of proven expertise</span> in GST &amp; TDS compliance, full-cycle accounting, and financial reporting across Telecom &amp; Wellness sectors.
             </>
           }
-          metricValue={50}
-          metricLabel="Projects"
+          metricValue={99}
+          metricLabel="Invoice Accuracy %"
         />
       </div>
 
-      {/* ── SECTION 2: MAIN SITE (z-10 sits above footer) ────────────────────── */}
-      <main id="work" className="relative z-10 w-full bg-black pb-40 md:pb-64 rounded-b-[40px] shadow-2xl">
-        <div className="flex flex-col pb-32 pt-4">
+      {/* ── SECTION 2: MAIN SITE (z-50 sits above footer and hero) ────────────────────── */}
+      <main id="work" className="relative z-50 w-full bg-transparent pb-10 md:pb-16">
+        <div className="flex flex-col">
           <ContainerScroll    
             titleComponent={
-              <motion.div
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: false, margin: "-10%" }}
-                className="mb-8 inline-block text-center"
-              >
-                <h2 className="flex flex-col items-center">
-                  <motion.span
-                    variants={{
-                      hidden: { scale: 0.5, opacity: 0, y: 20 },
-                      visible: { scale: 1, opacity: 1, y: 0 }
-                    }}
-                    transition={{ type: "spring", stiffness: 250, damping: 15 }}
-                    className="text-5xl md:text-[6rem] font-bold leading-[1.1] text-transparent bg-clip-text bg-gradient-to-b from-white/90 to-zinc-400 drop-shadow-sm block"
-                  >
-                    Financial
-                  </motion.span>
-                  <motion.span
-                    variants={{
-                      hidden: { scale: 0.5, opacity: 0, y: 20 },
-                      visible: { scale: 1, opacity: 1, y: 0 }
-                    }}
-                    transition={{ type: "spring", stiffness: 250, damping: 15, delay: 0.1 }}
-                    className="text-5xl md:text-[6rem] font-bold leading-[1.1] text-transparent bg-clip-text bg-gradient-to-b from-zinc-300 to-zinc-600 drop-shadow-sm block -mt-2"
-                  >
-                    Budget Tracker
-                  </motion.span>
-                </h2>
-              </motion.div>
+              <>
+                <div className="flex flex-col items-center justify-center mb-8">
+                  <span className="text-sm md:text-base text-zinc-400 uppercase tracking-[0.3em] font-bold mb-3 drop-shadow-md">
+                    My
+                  </span>
+                  <h1 className="text-5xl md:text-[6rem] font-black tracking-tighter leading-none text-transparent bg-clip-text bg-gradient-to-b from-white to-zinc-500 drop-shadow-2xl text-center">
+                    Career Dashboard
+                  </h1>
+                </div>
+              </>
             }
           >
-            <img
-              src="https://storage.efferd.com/screen/dashboard-dark.webp"
-              alt="Enterprise Dashboard"
-              className="mx-auto rounded-2xl object-cover h-full object-left-top opacity-90"
-              draggable={false}
-            />
+            <div className="h-full w-full overflow-hidden rounded-2xl bg-[#0a0a0c]">
+              <CVDashboard />
+            </div>
           </ContainerScroll>
         </div>
 
         {/* ── SECTION 3: EXPLORE MY WORK (CTA & SKILLS) ────────────────────────── */}
-        <div id="skills" className="flex flex-col items-center justify-center text-center w-full px-4 mb-16 relative z-10 pt-10">
+        <div id="skills" className="flex flex-col items-center justify-center text-center w-full px-4 mb-4 relative z-10 pt-10">
           <h2 className="text-4xl md:text-5xl lg:text-7xl font-bold tracking-tighter mb-6 text-transparent bg-clip-text bg-gradient-to-b from-white to-zinc-500 drop-shadow-sm">
             Explore my work.
           </h2>
           <p className="text-zinc-400 text-lg md:text-xl font-medium tracking-wide max-w-lg mx-auto text-center mb-16">
-            Let&apos;s build scalable financial systems together.
+            Let&apos;s build compliant, data-driven finance systems together.
           </p>
 
           <div className="w-full max-w-7xl mx-auto">
@@ -153,7 +129,7 @@ export default function Home() {
       </main>
 
       {/* ── CINEMATIC FOOTER ──────────────────────────────────────────────────── */}
-      <div id="contact" className="relative -mt-[40px] z-0">
+      <div id="contact" className="relative z-0">
         <CinematicFooter />
       </div>
 

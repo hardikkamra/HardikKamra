@@ -95,9 +95,7 @@ function BentoGrid({ items }: BentoGridProps) {
                                     </span>
                                 ))}
                             </div>
-                            <span className="text-xs font-semibold text-white/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-1">
-                                {item.cta || "Explore"} <span aria-hidden="true">&rarr;</span>
-                            </span>
+
                         </div>
                     </div>
 

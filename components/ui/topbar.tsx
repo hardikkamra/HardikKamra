@@ -19,24 +19,24 @@ import {
 const navigationLinks = [
   { href: "#home", label: "Home" },
   {
-    label: "Work",
+    label: "Experience",
     submenu: true,
     type: "description",
     items: [
       {
         href: "#work",
-        label: "Data Architecture",
-        description: "Scalable pipelines and data infrastructure.",
+        label: "Alpha Net",
+        description: "Account Executive | July 2025–Present, Chandigarh.",
       },
       {
         href: "#work",
-        label: "Financial Models",
-        description: "Complex forecasting and budgeting models.",
+        label: "Base39 Mobile Communication",
+        description: "Account Executive | Feb 2021–Jul 2025, Chandigarh.",
       },
       {
         href: "#work",
-        label: "Dashboards",
-        description: "Interactive visualization and BI tools.",
+        label: "Hopnext Wellness Pvt Ltd",
+        description: "Junior Accountant | Jan 2020–Jan 2021, Bathinda.",
       },
     ],
   },
@@ -45,8 +45,8 @@ const navigationLinks = [
     submenu: true,
     type: "icon",
     items: [
-      { href: "#skills", label: "Education", icon: "BookOpenIcon" },
-      { href: "#skills", label: "My Journey", icon: "LifeBuoyIcon" },
+      { href: "#skills", label: "Skills & Expertise", icon: "BookOpenIcon" },
+      { href: "#skills", label: "Certifications", icon: "LifeBuoyIcon" },
       { href: "#contact", label: "Contact", icon: "InfoIcon" },
     ],
   },
@@ -127,7 +127,7 @@ export function Topbar() {
           </Popover>
           <div className="flex items-center gap-6">
             <a href="#home" className="font-bold text-xl tracking-tighter text-white hover:text-white/90">
-              Cibi.
+              Hardik Kamra
             </a>
             
             <div className="hidden md:flex justify-center flex-1">
@@ -198,10 +198,10 @@ export function Topbar() {
         </div>
         <div className="flex items-center gap-2">
           <Button asChild variant="ghost" size="sm" className="text-sm text-white/70 hover:text-white hover:bg-white/10 hidden md:inline-flex">
-            <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
+            <a href="/Hardik_Kamra_Resume_Updated.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
           </Button>
           <Button asChild size="sm" className="text-sm bg-white text-black hover:bg-white/90">
-            <a href="#contact">Contact Me</a>
+            <a href="mailto:hardikkamra1997@gmail.com">Hire Me</a>
           </Button>
         </div>
       </div>

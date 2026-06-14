@@ -1,10 +1,11 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { motion, AnimatePresence, animate } from "framer-motion";
 import { cn } from "@/lib/utils";
+import { ShaderAnimation } from "@/components/ui/shader-lines";
+import { WebGLShader } from "@/components/ui/web-gl-shader";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
@@ -29,11 +30,6 @@ const INJECTED_STYLES = `
       -webkit-mask-image: radial-gradient(ellipse at center, black 0%, transparent 70%);
   }
 
-  /* -------------------------------------------------------------------
-     PHYSICAL SKEUOMORPHIC MATERIALS (Restored 3D Depth)
-  ---------------------------------------------------------------------- */
-  
-  /* OUTSIDE THE CARD: Theme-aware text (Shadow in Light Mode, Glow in Dark Mode) */
   .text-3d-matte {
       color: var(--color-foreground);
       text-shadow: 
@@ -46,13 +42,37 @@ const INJECTED_STYLES = `
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
-      transform: translateZ(0); /* Hardware acceleration to prevent WebKit clipping bug */
+      transform: translateZ(0);
       filter: 
           drop-shadow(0px 10px 20px color-mix(in srgb, var(--color-foreground) 15%, transparent)) 
           drop-shadow(0px 2px 4px color-mix(in srgb, var(--color-foreground) 10%, transparent));
   }
 
-  /* INSIDE THE CARD: Hardcoded Silver/White for the dark background, deep rich shadows */
+  .text-glassy-metallic {
+      background: linear-gradient(
+          to right,
+          #e0f2fe 0%,   /* light sky blue */
+          #fdf4ff 25%,  /* light pink/fuchsia */
+          #f1f5f9 50%,  /* silver/slate */
+          #e0e7ff 75%,  /* light indigo */
+          #e0f2fe 100%
+      );
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      color: transparent;
+      animation: shine-glass 8s linear infinite;
+      -webkit-text-stroke: 0.5px rgba(255, 255, 255, 0.4);
+      filter: drop-shadow(0 2px 8px rgba(255,255,255,0.1));
+  }
+
+  @keyframes shine-glass {
+      to {
+          background-position: 200% center;
+      }
+  }
+
   .text-card-silver-matte {
       background: linear-gradient(180deg, #FFFFFF 0%, #A1A1AA 100%);
       -webkit-background-clip: text;
@@ -64,7 +84,6 @@ const INJECTED_STYLES = `
           drop-shadow(0px 4px 8px rgba(0,0,0,0.6));
   }
 
-  /* Deep Physical Card with Dynamic Mouse Lighting */
   .premium-depth-card {
       background: linear-gradient(145deg, #18181b 0%, #09090b 100%);
       box-shadow: 
@@ -82,7 +101,6 @@ const INJECTED_STYLES = `
       mix-blend-mode: screen; transition: opacity 0.3s ease;
   }
 
-  /* Realistic iPhone Mockup Hardware */
   .iphone-bezel {
       background-color: #111;
       box-shadow: 
@@ -129,9 +147,23 @@ const INJECTED_STYLES = `
   .progress-ring {
       transform: rotate(-90deg);
       transform-origin: center;
-      stroke-dasharray: 402;
-      stroke-dashoffset: 402;
+      stroke-dasharray: 477;
+      stroke-dashoffset: 477;
       stroke-linecap: round;
+  }
+
+  .text-glassy-metallic {
+      background: linear-gradient(
+          90deg, 
+          rgba(255, 255, 180, 0.6) 0%, 
+          rgba(150, 220, 255, 0.6) 50%, 
+          rgba(230, 180, 255, 0.6) 100%
+      );
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      -webkit-text-stroke: 1px rgba(255, 255, 255, 0.8);
+      filter: drop-shadow(0px 4px 12px rgba(150, 220, 255, 0.2)) drop-shadow(0px 2px 4px rgba(0,0,0,0.5));
   }
 `;
 
@@ -139,20 +171,12 @@ export interface CinematicHeroProps extends React.HTMLAttributes<HTMLDivElement>
   brandName?: string;
   tagline1?: string;
   tagline2?: string;
-  cardHeading?: string;
-  cardDescription?: React.ReactNode;
-  metricValue?: number;
-  metricLabel?: string;
 }
 
 export function CinematicHero({
   brandName = "Cibi.",
   tagline1 = "Data that speaks",
   tagline2 = "shape your future.",
-  cardHeading = "Finance & Data Architecture.",
-  cardDescription,
-  metricValue = 50,
-  metricLabel = "Projects",
   className,
   ...props
 }: CinematicHeroProps) {
@@ -162,90 +186,71 @@ export function CinematicHero({
   const mockupRef = useRef<HTMLDivElement>(null);
   const requestRef = useRef<number>(0);
 
-  // Storytelling State
-  const [currentStep, setCurrentStep] = useState(0);
-  const currentStepRef = useRef(0);
-  const [hasRevealed, setHasRevealed] = useState(false);
-  const hasRevealedRef = useRef(false);
-
-  const [displayValue, setDisplayValue] = useState(0);
-  const valueRef = useRef(0);
+  const summaryText = "Results-driven Finance Professional with 5+ years of progressive experience in end-to-end accounting, GST & TDS compliance, and financial reporting across the Telecom and Wellness sectors. Proven track record of improving process efficiency, maintaining a zero-penalty compliance record, and driving cash flow improvements through data-driven insights. Proficient in Tally Prime, Tally ERP 9, Busy 2.1, and Advanced MS Excel.";
+  const summaryWords = summaryText.split(" ");
 
   const storySteps = [
     {
-      heading: "Finance & Data Architecture.",
-      description: "Bridging the gap between raw data and actionable financial insights with robust models and interactive dashboards.",
-      metricValue: 50,
-      metricLabel: "Projects",
-      badge1Title: "Level Up",
-      badge1Subtitle: "Goal reached",
+      heading: "5+ Years Experience.",
+      description: "Progressive experience as an Account Executive at Alpha Net and Base39 Mobile Communication, managing full-cycle accounts payable and receivable.",
+      metricValue: 5,
+      metricLabel: "Years Exp.",
+      badge1Title: "Alpha Net",
+      badge1Subtitle: "Account Exec",
+      badge1Icon: "🏢",
+      badge2Title: "Base39",
+      badge2Subtitle: "Accountant",
+      badge2Icon: "📱",
+    },
+    {
+      heading: "Cash Flow Improvement.",
+      description: "10% improvement in monthly cash inflow by optimizing receivables aging analysis and structuring collection follow-up systems.",
+      metricValue: 10,
+      metricLabel: "Inflow Boost %",
+      badge1Title: "DSO Reduced",
+      badge1Subtitle: "Significantly",
       badge1Icon: "📈",
-      badge2Title: "Sync Data",
-      badge2Subtitle: "Shared successfully",
-      badge2Icon: "⚡",
+      badge2Title: "Collections",
+      badge2Subtitle: "Structured",
+      badge2Icon: "💰",
     },
     {
-      heading: "Power BI Dashboards.",
-      description: "Turning raw numbers into visual narratives. Building interactive dashboards, utilizing DAX formulas, and creating automated KPI reports.",
-      metricValue: 85,
-      metricLabel: "Visuals",
-      badge1Title: "Data Linked",
-      badge1Subtitle: "Real-time sync",
-      badge1Icon: "🔗",
-      badge2Title: "Insights",
-      badge2Subtitle: "Generated",
-      badge2Icon: "💡",
-    },
-    {
-      heading: "SQL & Data Analysis.",
-      description: "Asking the right questions of structured databases. Using complex queries, JOINs, and aggregations to extract precise financial insights.",
-      metricValue: 120,
-      metricLabel: "Queries",
-      badge1Title: "Optimized",
-      badge1Subtitle: "0.2s runtime",
+      heading: "Process Automation.",
+      description: "Achieved a 20% reduction in report generation time through process automation and workflow redesign while ensuring 100% compliance.",
+      metricValue: 20,
+      metricLabel: "Time Saved %",
+      badge1Title: "Automated",
+      badge1Subtitle: "Workflows",
       badge1Icon: "⚡",
-      badge2Title: "Exported",
-      badge2Subtitle: "To Excel",
+      badge2Title: "Reporting",
+      badge2Subtitle: "Accelerated",
       badge2Icon: "📊",
     },
     {
-      heading: "CMA US Journey.",
-      description: "Currently pursuing CMA US and mastering SAP fundamentals—the backbone of enterprise financial planning, analysis, and control.",
-      metricValue: 90,
-      metricLabel: "Accuracy",
-      badge1Title: "Certified",
-      badge1Subtitle: "In Progress",
-      badge1Icon: "🎓",
-      badge2Title: "SAP ERP",
-      badge2Subtitle: "Connected",
-      badge2Icon: "🌐",
+      heading: "Invoice Accuracy.",
+      description: "Created and managed invoices for 100+ clients. Processed high-volume daily invoices with near-zero discrepancy, maintaining 99% accuracy.",
+      metricValue: 99,
+      metricLabel: "Accuracy %",
+      badge1Title: "High Volume",
+      badge1Subtitle: "Processed",
+      badge1Icon: "🧾",
+      badge2Title: "Discrepancy",
+      badge2Subtitle: "Near-Zero",
+      badge2Icon: "🎯",
     },
     {
-      heading: "Projects & Growth.",
-      description: "Constantly building, learning, and collaborating. Eager to bring my data manipulation and financial modeling skills to a fast-paced internship.",
+      heading: "GST & TDS Compliance.",
+      description: "Zero-Penalty Record across all GST and TDS filings during entire career. Ensured 100% compliance with filing deadlines, eliminating penalty risk.",
       metricValue: 100,
-      metricLabel: "Growth %",
-      badge1Title: "Open",
-      badge1Subtitle: "For roles",
-      badge1Icon: "💼",
-      badge2Title: "Resume",
-      badge2Subtitle: "Available",
-      badge2Icon: "📄",
-    }
+      metricLabel: "Compliance %",
+      badge1Title: "Zero Penalties",
+      badge1Subtitle: "All filings",
+      badge1Icon: "✅",
+      badge2Title: "GST Filed",
+      badge2Subtitle: "On time",
+      badge2Icon: "📋",
+    },
   ];
-
-  useEffect(() => {
-    if (!hasRevealed) return;
-    const controls = animate(valueRef.current, storySteps[currentStep].metricValue, {
-      duration: 1.5,
-      ease: "easeOut",
-      onUpdate: (val) => {
-        valueRef.current = val;
-        setDisplayValue(Math.round(val));
-      },
-    });
-    return () => controls.stop();
-  }, [currentStep, hasRevealed]);
 
   // 1. High-Performance Mouse Interaction Logic (Using requestAnimationFrame)
   useEffect(() => {
@@ -283,95 +288,133 @@ export function CinematicHero({
     };
   }, []);
 
-  // 2. Complex Cinematic Scroll Timeline
+  // 2. Pure GSAP Cinematic Scroll Timeline
   useEffect(() => {
     const isMobile = window.innerWidth < 768;
 
     const ctx = gsap.context(() => {
+      // Reset all elements
       gsap.set(".text-track", { autoAlpha: 0, y: 60, scale: 0.85, filter: "blur(20px)", rotationX: -20 });
       gsap.set(".text-days", { autoAlpha: 1, clipPath: "inset(0 100% 0 0)" });
       gsap.set(".main-card", { y: window.innerHeight + 200, autoAlpha: 1 });
-      gsap.set([".card-left-text", ".card-right-text", ".mockup-scroll-wrapper", ".floating-badge", ".phone-widget"], { autoAlpha: 0 });
+      gsap.set([".card-right-text", ".mockup-scroll-wrapper", ".phone-widget", ".hero-summary-text", ".step-text", ".step-badge"], { autoAlpha: 0 });
+      gsap.set(".hero-summary-text", { y: 30 });
+      gsap.set(".next-section-title", { autoAlpha: 0 });
 
+      // Initial Intro Animation
       const introTl = gsap.timeline({ delay: 0.3 });
       introTl
         .to(".text-track", { duration: 1.8, autoAlpha: 1, y: 0, scale: 1, filter: "blur(0px)", rotationX: 0, ease: "expo.out" })
         .to(".text-days", { duration: 1.4, clipPath: "inset(0 0% 0 0)", ease: "power4.inOut" }, "-=1.0");
 
+      // Main Scroll Timeline
       const scrollTl = gsap.timeline({
         scrollTrigger: {
           trigger: containerRef.current,
           start: "top top",
-          end: "+=1800", // Fast, snappy scroll distance
+          end: "+=12000", // Massively lengthened for ultimate smoothness
           pin: true,
-          scrub: 0.5,
+          scrub: 1.5,
           anticipatePin: 1,
-          onUpdate: (self) => {
-            const p = self.progress;
-
-            // Trigger the initial numbers reveal early in the setup phase
-            if (p > 0.05 && !hasRevealedRef.current) {
-              setHasRevealed(true);
-              hasRevealedRef.current = true;
-            }
-
-            // Map progress 0.15 -> 0.85 to our 5 steps (the storytelling pause phase)
-            let step = 0;
-            if (p > 0.15 && p < 0.85) {
-              const mapped = (p - 0.15) / 0.70;
-              step = Math.min(4, Math.max(0, Math.floor(mapped * 5)));
-            } else if (p >= 0.85) {
-              step = 4;
-            }
-
-            if (step !== currentStepRef.current) {
-              setCurrentStep(step);
-              currentStepRef.current = step;
-            }
-          }
-        },
+        }
       });
 
+      // 1. SETUP PHASE (Card flies in)
       scrollTl
-        // 1. SETUP PHASE (Extremely fast in timeline time so it happens with little scrolling)
-        .to([".hero-text-wrapper", ".bg-grid-theme"], { scale: 1.15, filter: "blur(20px)", opacity: 0, ease: "power2.inOut", duration: 0.5 }, 0)
-        .to(".main-card", { y: 0, ease: "power3.inOut", duration: 0.5 }, 0)
-        .to(".main-card", { width: "100%", height: "100%", borderRadius: "0px", ease: "power3.inOut", duration: 0.4 })
-
-        // Gorgeous 3D fly-in for the widgets
+        .to([".hero-text-wrapper", ".bg-grid-theme"], { scale: 1.15, filter: "blur(20px)", opacity: 0.2, ease: "power2.inOut", duration: 2 }, 0)
+        .to(".main-card", { y: 0, ease: "power3.inOut", duration: 2 }, 0)
+        .to(".main-card", { width: "100%", height: "100%", borderRadius: "0px", ease: "power3.inOut", duration: 1.5 })
+        
+        // Mockup 3D fly-in
         .fromTo(".mockup-scroll-wrapper",
           { y: 300, z: -500, rotationX: 50, rotationY: -30, autoAlpha: 0, scale: 0.6 },
-          { y: 0, z: 0, rotationX: 0, rotationY: 0, autoAlpha: 1, scale: 1, ease: "expo.out", duration: 0.6 }, "-=0.2"
+          { y: 0, z: 0, rotationX: 0, rotationY: 0, autoAlpha: 1, scale: 1, ease: "expo.out", duration: 2.5 }, "-=0.8"
         )
-        .fromTo(".phone-widget", { y: 40, autoAlpha: 0, scale: 0.95 }, { y: 0, autoAlpha: 1, scale: 1, stagger: 0.05, ease: "back.out(1.2)", duration: 0.4 }, "-=0.3")
-        .fromTo(".floating-badge", { y: 100, autoAlpha: 0, scale: 0.7, rotationZ: -10 }, { y: 0, autoAlpha: 1, scale: 1, rotationZ: 0, ease: "back.out(1.5)", duration: 0.4, stagger: 0.1 }, "-=0.4")
-        .fromTo(".card-left-text", { x: -50, autoAlpha: 0 }, { x: 0, autoAlpha: 1, ease: "power4.out", duration: 0.4 }, "-=0.4")
-        .fromTo(".card-right-text", { x: 50, autoAlpha: 0, scale: 0.8 }, { x: 0, autoAlpha: 1, scale: 1, ease: "expo.out", duration: 0.4 }, "<")
+        // Widgets pop in
+        .fromTo(".phone-widget", { y: 40, autoAlpha: 0, scale: 0.95 }, { y: 0, autoAlpha: 1, scale: 1, stagger: 0.15, ease: "back.out(1.2)", duration: 1.5 }, "-=1.5")
+        // Brand text fades in
+        .fromTo(".card-right-text", { x: 50, autoAlpha: 0, scale: 0.8 }, { x: 0, autoAlpha: 1, scale: 1, ease: "expo.out", duration: 1.5 }, "<");
 
-        // 2. STORYTELLING PAUSE (Massive duration so the user spends most of their scroll here)
-        .to({}, { duration: 10.0 })
+      // 2. SEQUENTIAL STORYTELLING PHASE (Pure GSAP)
+      storySteps.forEach((step, index) => {
+        // Calculate stroke offset
+        const strokeOffset = 477 - (477 * (step.metricValue / 100));
 
-        // 3. EXIT PHASE (3D Pop In to match the Budget Tracker)
-        .to(".main-card", {
-          scale: 0.9,
-          borderRadius: isMobile ? "32px" : "40px",
-          rotationX: -15,
-          y: -50,
-          opacity: 0,
-          ease: "power2.inOut",
-          duration: 0.8
+        if (index === 0) {
+          // Entry of the first step
+          scrollTl.to(".progress-ring", { strokeDashoffset: strokeOffset, duration: 2, ease: "power3.inOut" }, "-=1.2");
+          scrollTl.to(".counter-val", { innerHTML: step.metricValue, snap: { innerHTML: 1 }, duration: 2, ease: "expo.out" }, "-=2.0");
+          scrollTl.to(".metric-label-val", { innerHTML: step.metricLabel, duration: 0.1 }, "-=2.0");
+          scrollTl.fromTo(`.step-badge-${index}`, { y: 100, autoAlpha: 0, scale: 0.7, rotationZ: -10 }, { y: 0, autoAlpha: 1, scale: 1, rotationZ: 0, ease: "back.out(1.5)", duration: 1.5, stagger: 0.2 }, "-=2.0");
+          scrollTl.fromTo(`.step-text-${index}`, { x: -50, autoAlpha: 0 }, { x: 0, autoAlpha: 1, ease: "power4.out", duration: 1.5 }, "-=1.5");
+        } else {
+          // Crossfade from previous step
+          scrollTl.to([`.step-text-${index-1}`, `.step-badge-${index-1}`], { autoAlpha: 0, y: -40, duration: 1.2, stagger: 0.05 });
+          
+          scrollTl.to(".progress-ring", { strokeDashoffset: strokeOffset, duration: 2, ease: "power3.inOut" }, "<");
+          scrollTl.to(".counter-val", { innerHTML: step.metricValue, snap: { innerHTML: 1 }, duration: 2, ease: "expo.out" }, "<");
+          scrollTl.to(".metric-label-val", { innerHTML: step.metricLabel, duration: 0.1 }, "<");
+          
+          scrollTl.fromTo(`.step-badge-${index}`, { y: 100, autoAlpha: 0, scale: 0.7, rotationZ: -10 }, { y: 0, autoAlpha: 1, scale: 1, rotationZ: 0, ease: "back.out(1.5)", duration: 1.5, stagger: 0.2 }, "<+=0.5");
+          scrollTl.fromTo(`.step-text-${index}`, { x: -50, autoAlpha: 0 }, { x: 0, autoAlpha: 1, ease: "power4.out", duration: 1.5 }, "<");
+        }
+
+        // Dwell time to read the step
+        scrollTl.to({}, { duration: 3.5 });
+      });
+
+      // 3. EXIT PHASE
+      scrollTl
+        .to([".mockup-scroll-wrapper", `.step-badge-${storySteps.length - 1}`, `.step-text-${storySteps.length - 1}`, ".card-right-text"], {
+          scale: 0.9, y: -40, z: -200, autoAlpha: 0, ease: "power3.in", duration: 1.5, stagger: 0.05,
         })
-        .to(".hero-fade-out-overlay", {
-          opacity: 1,
-          ease: "power2.inOut",
-          duration: 0.8
-        }, "<")
-        .to([".mockup-scroll-wrapper", ".floating-badge", ".card-left-text", ".card-right-text", ".hero-text-wrapper", ".bg-grid-theme"], {
-          opacity: 0,
-          scale: 0.9,
-          ease: "power2.inOut",
-          duration: 0.6
-        }, "<");
+        .to(".main-card", { 
+          width: isMobile ? "92vw" : "85vw", 
+          height: isMobile ? "92vh" : "85vh", 
+          borderRadius: isMobile ? "32px" : "40px", 
+          ease: "expo.inOut", 
+          duration: 1.8 
+        }, "pullback") 
+        .to(".main-card", { y: -(window.innerHeight + 200), ease: "power3.inOut", duration: 1.5 })
+        
+        // Full section preview fades in as card exits
+        .to(".next-section-title", { autoAlpha: 1, ease: "power2.out", duration: 0.8 }, "-=0.8")
+        
+        // Text distorts and warps out holographically instead of just zooming massively into clipping bounds
+        .to(".hero-name-text", { 
+            scale: 2.5, 
+            scaleY: 1.5,
+            skewX: 20,
+            filter: "blur(15px)",
+            autoAlpha: 0, 
+            ease: "power2.inOut", 
+            duration: 4.5 
+        }, "+=0.2")
+
+        // The background smoothly dissolves into pure black
+        .to(".hero-fade-out-overlay", { autoAlpha: 1, ease: "power2.inOut", duration: 4.0 }, "<+=1.0")
+        .to(".landing-shader-canvas-v2", { autoAlpha: 0, ease: "power2.inOut", duration: 4.0 }, "<")
+
+        // Fade in summary text container
+        .to(".hero-summary-text", { autoAlpha: 1, y: 0, ease: "power2.out", duration: 2.5 }, ">-2.0")
+        
+        // Typewriter effect on characters
+        .to(".summary-char", { opacity: 1, stagger: 0.05, duration: 0.1, ease: "none" }, "<+=0.5")
+
+        // Hold the summary text
+        .to({}, { duration: 8.0 })
+
+        // Warp/Distort Fade out
+        .to(".hero-summary-text", { 
+            autoAlpha: 0, 
+            scaleY: 1.5, 
+            scaleX: 0.8, 
+            skewX: 10, 
+            y: -40, 
+            filter: "blur(15px)", 
+            ease: "power3.in", 
+            duration: 2.5 
+        });
 
     }, containerRef);
 
@@ -381,27 +424,52 @@ export function CinematicHero({
   return (
     <div
       ref={containerRef}
-      className={cn("relative w-full h-screen bg-gradient-to-b from-black via-zinc-900/40 to-black overflow-hidden flex items-center justify-center", className)}
-      style={{ perspective: "1500px" }}
+      className="relative w-full h-screen overflow-hidden flex items-center justify-center"
+      style={{ perspective: "1000px" }}
       {...props}
     >
+      <div className="absolute inset-0 z-0">
+        <WebGLShader />
+      </div>
       <style dangerouslySetInnerHTML={{ __html: INJECTED_STYLES }} />
-      <div className="absolute inset-0 z-0 bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.02)_0%,transparent_100%)] pointer-events-none" />
+      <div className="absolute inset-0 z-10 bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.02)_0%,transparent_100%)] pointer-events-none" />
       
-      {/* Black overlay that fades in at the very end to seamlessly transition to the next black section */}
-      <div className="hero-fade-out-overlay absolute inset-0 z-20 bg-black opacity-0 pointer-events-none" />
+      <div className="hero-fade-out-overlay absolute inset-0 z-[100] bg-black opacity-0 pointer-events-none" />
 
-      {/* BACKGROUND LAYER: Hero Texts */}
+      {/* BACKGROUND LAYER: Hero Taglines */}
       <div className="hero-text-wrapper absolute z-10 flex flex-col items-center justify-center text-center w-screen px-4 will-change-transform transform-style-3d">
-        <h1 className="text-track gsap-reveal text-transparent bg-clip-text bg-gradient-to-b from-white to-white/50 text-4xl md:text-5xl lg:text-[5.5rem] font-bold tracking-tight mb-2 drop-shadow-lg">
+        <h1 className="text-track gsap-reveal text-transparent bg-clip-text bg-gradient-to-b from-white to-white/50 text-4xl md:text-5xl lg:text-[5.5rem] font-bold tracking-tight mb-2 drop-shadow-lg pb-2">
           {tagline1}
         </h1>
-        <h1 className="text-days gsap-reveal text-transparent bg-clip-text bg-gradient-to-b from-white/90 to-zinc-500 text-4xl md:text-5xl lg:text-[5.5rem] font-extrabold tracking-tighter drop-shadow-xl">
+        <h1 className="text-days gsap-reveal text-transparent bg-clip-text bg-gradient-to-b from-white/90 to-zinc-500 text-4xl md:text-5xl lg:text-[5.5rem] font-extrabold tracking-tighter drop-shadow-xl pb-2">
           {tagline2}
         </h1>
       </div>
 
-      {/* BACKGROUND LAYER 1: Subtle Animated Grid (Fades out quickly) */}
+      {/* NEXT SECTION PREVIEW */}
+      <div className="next-section-title absolute inset-0 z-10 flex flex-col items-center justify-center overflow-hidden w-full">
+        <ShaderAnimation/>
+        <span className="hero-name-text absolute pointer-events-none z-10 text-center text-[13vw] sm:text-[12vw] md:text-[10vw] lg:text-[9vw] xl:text-[8.5vw] leading-none font-semibold tracking-tighter whitespace-nowrap text-neutral-100 drop-shadow-2xl px-4">
+          Hardik Kamra.
+        </span>
+      </div>
+
+      <div className="hero-summary-text absolute inset-0 z-[110] flex flex-col items-center justify-center pointer-events-none opacity-0 translate-y-8">
+        <div className="w-full max-w-[95vw] lg:max-w-[85vw] px-4 text-center">
+          <p className="text-glassy-metallic text-2xl md:text-4xl lg:text-5xl font-medium leading-snug tracking-wide">
+            {summaryWords.map((word, wordIndex) => (
+              <span key={wordIndex} className="inline-block mr-[0.3em]">
+                {word.split("").map((char, charIndex) => (
+                  <span key={charIndex} className="summary-char opacity-0 inline-block">
+                    {char}
+                  </span>
+                ))}
+              </span>
+            ))}
+          </p>
+        </div>
+      </div>
+
       <div className="absolute inset-0 z-0 bg-grid-theme opacity-30 pointer-events-none" />
 
       {/* FOREGROUND LAYER: The Physical Deep Blue Card */}
@@ -412,7 +480,7 @@ export function CinematicHero({
         >
           <div className="card-sheen" aria-hidden="true" />
 
-          {/* DYNAMIC RESPONSIVE GRID: Flex-col on mobile to force order, Grid on desktop */}
+          {/* DYNAMIC RESPONSIVE GRID */}
           <div className="relative w-full h-full max-w-7xl mx-auto px-4 lg:px-12 flex flex-col justify-evenly lg:grid lg:grid-cols-3 items-center lg:gap-8 z-10 py-6 lg:py-0">
 
             {/* 1. TOP (Mobile) / RIGHT (Desktop): BRAND NAME */}
@@ -424,52 +492,29 @@ export function CinematicHero({
 
             {/* 2. MIDDLE (Mobile) / CENTER (Desktop): DATA WIDGET */}
             <div className="mockup-scroll-wrapper order-2 lg:order-2 relative w-full h-[380px] lg:h-[600px] flex items-center justify-center z-10" style={{ perspective: "1000px" }}>
-
-              {/* Inner wrapper for safe CSS scaling */}
               <div className="relative w-full h-full flex items-center justify-center transform scale-[0.65] md:scale-[0.85] lg:scale-100">
-
-                {/* Clean Dashboard Widget Container */}
                 <div
                   ref={mockupRef}
                   className="relative w-[340px] h-[480px] rounded-[2.5rem] flex flex-col will-change-transform transform-style-3d border border-white/5 bg-[#050508] shadow-[0_40px_80px_-15px_rgba(0,0,0,0.9)]"
                 >
                   <div className="absolute inset-0 screen-glare z-40 pointer-events-none rounded-[2.5rem]" aria-hidden="true" />
-
-                  {/* App Interface */}
                   <div className="relative w-full h-full pt-10 px-6 pb-8 flex flex-col z-10">
                     <div className="phone-widget flex justify-between items-center mb-10">
                       <div className="flex flex-col">
                         <span className="text-[10px] text-neutral-500 uppercase tracking-widest font-bold mb-1">Metrics</span>
                         <span className="text-xl font-bold tracking-tight text-white drop-shadow-md">Overview</span>
                       </div>
-                      <div className="w-10 h-10 rounded-full bg-white/5 text-neutral-300 flex items-center justify-center font-bold text-sm border border-white/5 shadow-lg shadow-black/50">BS</div>
+                      <div className="w-10 h-10 rounded-full bg-white/5 text-neutral-300 flex items-center justify-center font-bold text-sm border border-white/5 shadow-lg shadow-black/50">HK</div>
                     </div>
 
                     <div className="phone-widget relative w-48 h-48 mx-auto flex items-center justify-center mb-10 drop-shadow-[0_15px_25px_rgba(0,0,0,0.8)]">
                       <svg className="absolute inset-0 w-full h-full" aria-hidden="true">
                         <circle cx="96" cy="96" r="76" fill="none" stroke="rgba(255,255,255,0.03)" strokeWidth="16" />
-                        <motion.circle
-                          className="progress-ring"
-                          cx="96" cy="96" r="76" fill="none" stroke="#FFFFFF" strokeWidth="16"
-                          strokeDasharray="477"
-                          animate={{ strokeDashoffset: hasRevealed ? 477 - (477 * (storySteps[currentStep].metricValue / 150)) : 477 }}
-                          transition={{ duration: 1.5, ease: "easeOut" }}
-                        />
+                        <circle className="progress-ring" cx="96" cy="96" r="76" fill="none" stroke="#FFFFFF" strokeWidth="16" style={{ strokeDashoffset: 477 }} />
                       </svg>
                       <div className="text-center z-10 flex flex-col items-center">
-                        <span className="counter-val text-5xl font-extrabold tracking-tighter text-white">{displayValue}</span>
-                        <AnimatePresence mode="wait">
-                          <motion.span
-                            key={currentStep}
-                            initial={{ opacity: 0, y: 5 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            exit={{ opacity: 0, y: -5 }}
-                            transition={{ duration: 0.3 }}
-                            className="text-[10px] text-neutral-500 uppercase tracking-[0.1em] font-bold mt-1 block"
-                          >
-                            {storySteps[currentStep].metricLabel}
-                          </motion.span>
-                        </AnimatePresence>
+                        <span className="counter-val text-5xl font-extrabold tracking-tighter text-white">0</span>
+                        <span className="metric-label-val text-[10px] text-neutral-500 uppercase tracking-[0.1em] font-bold mt-1 block">Value</span>
                       </div>
                     </div>
 
@@ -489,85 +534,46 @@ export function CinematicHero({
                   </div>
                 </div>
 
-                {/* Floating Glass Badges */}
-                <div className="floating-badge absolute flex top-6 lg:top-12 left-[-15px] lg:left-[-80px] floating-ui-badge rounded-xl lg:rounded-2xl p-3 lg:p-4 items-center gap-3 lg:gap-4 z-30 min-w-[160px] lg:min-w-[190px]">
-                  <AnimatePresence mode="wait">
-                    <motion.div
-                      key={currentStep}
-                      initial={{ opacity: 0, scale: 0.8 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      exit={{ opacity: 0, scale: 0.8 }}
-                      transition={{ duration: 0.15 }}
-                      className="w-8 h-8 lg:w-10 lg:h-10 rounded-full bg-white/5 flex items-center justify-center border border-white/5 shadow-inner flex-shrink-0"
-                    >
-                      <span className="text-base lg:text-xl drop-shadow-lg" aria-hidden="true">{storySteps[currentStep].badge1Icon}</span>
-                    </motion.div>
-                  </AnimatePresence>
-                  <AnimatePresence mode="wait">
-                    <motion.div
-                      key={currentStep}
-                      initial={{ opacity: 0, x: -5 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      exit={{ opacity: 0, x: 5 }}
-                      transition={{ duration: 0.15 }}
-                      className="flex-1"
-                    >
-                      <p className="text-white text-xs lg:text-sm font-bold tracking-tight whitespace-nowrap">{storySteps[currentStep].badge1Title}</p>
-                      <p className="text-neutral-500 text-[10px] lg:text-xs font-medium whitespace-nowrap">{storySteps[currentStep].badge1Subtitle}</p>
-                    </motion.div>
-                  </AnimatePresence>
-                </div>
+                {/* Floating Glass Badges mapped absolutely */}
+                {storySteps.map((step, index) => (
+                  <React.Fragment key={index}>
+                    <div className={`step-badge step-badge-${index} absolute flex top-6 lg:top-12 left-[-15px] lg:left-[-80px] floating-ui-badge rounded-xl lg:rounded-2xl p-3 lg:p-4 items-center gap-3 lg:gap-4 z-30 min-w-[160px] lg:min-w-[190px] opacity-0 invisible`}>
+                      <div className="w-8 h-8 lg:w-10 lg:h-10 rounded-full bg-white/5 flex items-center justify-center border border-white/5 shadow-inner flex-shrink-0">
+                        <span className="text-base lg:text-xl drop-shadow-lg" aria-hidden="true">{step.badge1Icon}</span>
+                      </div>
+                      <div className="flex-1">
+                        <p className="text-white text-xs lg:text-sm font-bold tracking-tight whitespace-nowrap">{step.badge1Title}</p>
+                        <p className="text-neutral-500 text-[10px] lg:text-xs font-medium whitespace-nowrap">{step.badge1Subtitle}</p>
+                      </div>
+                    </div>
 
-                <div className="floating-badge absolute flex bottom-12 lg:bottom-20 right-[-15px] lg:right-[-80px] floating-ui-badge rounded-xl lg:rounded-2xl p-3 lg:p-4 items-center gap-3 lg:gap-4 z-30 min-w-[160px] lg:min-w-[190px]">
-                  <AnimatePresence mode="wait">
-                    <motion.div
-                      key={currentStep}
-                      initial={{ opacity: 0, scale: 0.8 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      exit={{ opacity: 0, scale: 0.8 }}
-                      transition={{ duration: 0.15 }}
-                      className="w-8 h-8 lg:w-10 lg:h-10 rounded-full bg-white/5 flex items-center justify-center border border-white/5 shadow-inner flex-shrink-0"
-                    >
-                      <span className="text-base lg:text-lg drop-shadow-lg" aria-hidden="true">{storySteps[currentStep].badge2Icon}</span>
-                    </motion.div>
-                  </AnimatePresence>
-                  <AnimatePresence mode="wait">
-                    <motion.div
-                      key={currentStep}
-                      initial={{ opacity: 0, x: 5 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      exit={{ opacity: 0, x: -5 }}
-                      transition={{ duration: 0.15 }}
-                      className="flex-1"
-                    >
-                      <p className="text-white text-xs lg:text-sm font-bold tracking-tight whitespace-nowrap">{storySteps[currentStep].badge2Title}</p>
-                      <p className="text-neutral-500 text-[10px] lg:text-xs font-medium whitespace-nowrap">{storySteps[currentStep].badge2Subtitle}</p>
-                    </motion.div>
-                  </AnimatePresence>
-                </div>
+                    <div className={`step-badge step-badge-${index} absolute flex bottom-12 lg:bottom-20 right-[-15px] lg:right-[-80px] floating-ui-badge rounded-xl lg:rounded-2xl p-3 lg:p-4 items-center gap-3 lg:gap-4 z-30 min-w-[160px] lg:min-w-[190px] opacity-0 invisible`}>
+                      <div className="w-8 h-8 lg:w-10 lg:h-10 rounded-full bg-white/5 flex items-center justify-center border border-white/5 shadow-inner flex-shrink-0">
+                        <span className="text-base lg:text-lg drop-shadow-lg" aria-hidden="true">{step.badge2Icon}</span>
+                      </div>
+                      <div className="flex-1">
+                        <p className="text-white text-xs lg:text-sm font-bold tracking-tight whitespace-nowrap">{step.badge2Title}</p>
+                        <p className="text-neutral-500 text-[10px] lg:text-xs font-medium whitespace-nowrap">{step.badge2Subtitle}</p>
+                      </div>
+                    </div>
+                  </React.Fragment>
+                ))}
 
               </div>
             </div>
 
             {/* 3. BOTTOM (Mobile) / LEFT (Desktop): ACCOUNTABILITY TEXT */}
-            <div className="card-left-text gsap-reveal order-3 lg:order-1 flex flex-col justify-center text-center lg:text-left z-20 w-full lg:max-w-none px-4 lg:px-0 h-[220px] lg:h-[300px] relative overflow-hidden lg:overflow-visible">
-              <AnimatePresence>
-                <motion.div
-                  key={currentStep}
-                  className="absolute inset-0 flex flex-col justify-center"
-                  initial={{ opacity: 0, y: 15, filter: "blur(6px)" }}
-                  animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                  exit={{ opacity: 0, y: -15, filter: "blur(6px)" }}
-                  transition={{ duration: 0.4, ease: "easeOut" }}
-                >
+            <div className="order-3 lg:order-1 flex flex-col justify-center text-center lg:text-left z-20 w-full lg:max-w-none px-4 lg:px-0 h-[220px] lg:h-[300px] relative overflow-hidden lg:overflow-visible">
+              {storySteps.map((step, index) => (
+                <div key={index} className={`step-text step-text-${index} absolute inset-0 flex flex-col justify-center opacity-0 invisible`}>
                   <h3 className="text-white text-3xl md:text-4xl lg:text-[2.5rem] font-bold mb-4 lg:mb-6 tracking-tight leading-tight">
-                    {storySteps[currentStep].heading}
+                    {step.heading}
                   </h3>
                   <p className="text-blue-100/70 text-sm md:text-base lg:text-lg font-light leading-relaxed mx-auto lg:mx-0 max-w-sm lg:max-w-none">
-                    {storySteps[currentStep].description}
+                    {step.description}
                   </p>
-                </motion.div>
-              </AnimatePresence>
+                </div>
+              ))}
             </div>
 
           </div>

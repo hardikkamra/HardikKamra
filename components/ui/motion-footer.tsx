@@ -195,11 +195,12 @@ MagneticButton.displayName = "MagneticButton";
 
 const MarqueeItem = () => (
   <div className="flex items-center space-x-12 px-6">
-    <span>Finance & Data</span> <span className="text-purple-400/60">✦</span>
-    <span>Excel Mastery</span> <span className="text-indigo-400/60">✦</span>
-    <span>Power BI Dashboards</span> <span className="text-purple-400/60">✦</span>
-    <span>SQL Analytics</span> <span className="text-indigo-400/60">✦</span>
-    <span>SAP Integration</span> <span className="text-purple-400/60">✦</span>
+    <span>GST &amp; TDS Compliance</span> <span className="text-purple-400/60">✦</span>
+    <span>Tally Prime Expert</span> <span className="text-indigo-400/60">✦</span>
+    <span>Advanced MS Excel</span> <span className="text-purple-400/60">✦</span>
+    <span>Bank Reconciliation</span> <span className="text-indigo-400/60">✦</span>
+    <span>AP / AR Management</span> <span className="text-purple-400/60">✦</span>
+    <span>Zero-Penalty Record</span> <span className="text-indigo-400/60">✦</span>
   </div>
 );
 
@@ -260,11 +261,17 @@ export function CinematicFooter() {
     <>
       <style dangerouslySetInnerHTML={{ __html: STYLES }} />
 
+      {/* 
+        The "Curtain Reveal" Wrapper:
+        It sits in standard flow. Because it has clip-path, its contents
+        are ONLY visible within its bounding box. 
+      */}
       <div
         ref={wrapperRef}
         className="relative h-screen w-full"
         style={{ clipPath: "polygon(0% 0, 100% 0%, 100% 100%, 0 100%)" }}
       >
+        {/* The actual footer stays fixed to the viewport underneath everything */}
         <footer className="fixed bottom-0 left-0 flex h-screen w-full flex-col justify-between overflow-hidden bg-black text-foreground cinematic-footer-wrapper">
 
           <div className="footer-aurora absolute left-1/2 top-1/2 h-[60vh] w-[80vw] -translate-x-1/2 -translate-y-1/2 animate-footer-breathe rounded-[50%] blur-[80px] pointer-events-none z-0" />
@@ -274,7 +281,7 @@ export function CinematicFooter() {
             ref={giantTextRef}
             className="footer-giant-bg-text absolute -bottom-[5vh] left-1/2 -translate-x-1/2 whitespace-nowrap z-0 pointer-events-none select-none"
           >
-            CIBI
+            HARDIK
           </div>
 
           <div className="absolute top-12 left-0 w-full overflow-hidden border-y border-white/10 bg-black/60 backdrop-blur-md py-4 z-10 -rotate-2 scale-110 shadow-2xl">
@@ -294,14 +301,14 @@ export function CinematicFooter() {
 
             <div ref={linksRef} className="flex flex-col items-center gap-6 w-full">
               <div className="flex flex-wrap justify-center gap-4 w-full">
-                <MagneticButton as="a" href="mailto:hello@cibi.com" className="footer-glass-pill px-10 py-5 rounded-full text-foreground font-bold text-sm md:text-base flex items-center gap-3 group">
+                <MagneticButton as="a" href="mailto:hardikkamra1997@gmail.com" className="footer-glass-pill px-10 py-5 rounded-full text-foreground font-bold text-sm md:text-base flex items-center gap-3 group">
                   <svg className="w-6 h-6 text-muted-foreground group-hover:text-foreground transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                   </svg>
                   Email Me
                 </MagneticButton>
 
-                <MagneticButton as="a" href="https://linkedin.com/in/cibi" target="_blank" className="footer-glass-pill px-10 py-5 rounded-full text-foreground font-bold text-sm md:text-base flex items-center gap-3 group">
+                <MagneticButton as="a" href="https://linkedin.com/in/harrdik-kamra" target="_blank" className="footer-glass-pill px-10 py-5 rounded-full text-foreground font-bold text-sm md:text-base flex items-center gap-3 group">
                   <svg className="w-6 h-6 text-muted-foreground group-hover:text-foreground transition-colors" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
                   </svg>
@@ -310,14 +317,11 @@ export function CinematicFooter() {
               </div>
 
               <div className="flex flex-wrap justify-center gap-3 md:gap-6 w-full mt-2">
-                <MagneticButton as="a" href="#" className="footer-glass-pill px-6 py-3 rounded-full text-muted-foreground font-medium text-xs md:text-sm hover:text-foreground">
-                  Privacy Policy
+                <MagneticButton as="a" href="/Hardik_Kamra_Resume_Updated.pdf" download="Hardik_Kamra_Resume.pdf" className="footer-glass-pill px-6 py-3 rounded-full text-muted-foreground font-medium text-xs md:text-sm hover:text-foreground">
+                  Download Resume
                 </MagneticButton>
-                <MagneticButton as="a" href="#" className="footer-glass-pill px-6 py-3 rounded-full text-muted-foreground font-medium text-xs md:text-sm hover:text-foreground">
-                  Terms of Service
-                </MagneticButton>
-                <MagneticButton as="a" href="#" className="footer-glass-pill px-6 py-3 rounded-full text-muted-foreground font-medium text-xs md:text-sm hover:text-foreground">
-                  Support
+                <MagneticButton as="a" href="https://wa.me/" target="_blank" className="footer-glass-pill px-6 py-3 rounded-full text-muted-foreground font-medium text-xs md:text-sm hover:text-foreground">
+                  WhatsApp
                 </MagneticButton>
               </div>
             </div>
@@ -325,14 +329,12 @@ export function CinematicFooter() {
 
           <div className="relative z-20 w-full pb-8 px-6 md:px-12 flex flex-col md:flex-row items-center justify-between gap-6">
             <div className="text-muted-foreground text-[10px] md:text-xs font-semibold tracking-widest uppercase order-2 md:order-1">
-              © 2026 Cibi. All rights reserved.
+              © 2026 Hardik Kamra. All rights reserved.
             </div>
 
-            <div className="footer-glass-pill px-6 py-3 rounded-full flex items-center gap-2 order-1 md:order-2 cursor-default border-border/50">
-              <span className="text-muted-foreground text-[10px] md:text-xs font-bold uppercase tracking-widest">Crafted with</span>
-              <span className="animate-footer-heartbeat text-sm md:text-base text-red-500">❤</span>
-              <span className="text-muted-foreground text-[10px] md:text-xs font-bold uppercase tracking-widest">by</span>
-              <span className="text-foreground font-black text-xs md:text-sm tracking-normal ml-1">Cibi</span>
+            <div className="footer-glass-pill px-6 py-3 rounded-full flex items-baseline gap-1.5 order-1 md:order-2 cursor-default border-border/50">
+              <span className="text-muted-foreground text-[10px] md:text-xs font-bold uppercase tracking-widest">Designed & Built By</span>
+              <span className="text-foreground font-black text-xs md:text-sm tracking-normal">Professor.</span>
             </div>
 
             <MagneticButton

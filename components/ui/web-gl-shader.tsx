@@ -2,12 +2,8 @@
 
 import { useEffect, useRef } from "react"
 import * as THREE from "three"
-import { motion, useScroll, useTransform } from "framer-motion"
 
 export function WebGLShader() {
-  const { scrollYProgress } = useScroll()
-  const scale = useTransform(scrollYProgress, [0, 0.5, 1], [1, 1.3, 1])
-  const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [1, 0.5, 0.2])
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const sceneRef = useRef<{
     scene: THREE.Scene | null
@@ -81,11 +77,11 @@ export function WebGLShader() {
 
       const position = [
         -1.0, -1.0, 0.0,
-        1.0, -1.0, 0.0,
-        -1.0, 1.0, 0.0,
-        1.0, -1.0, 0.0,
-        -1.0, 1.0, 0.0,
-        1.0, 1.0, 0.0,
+         1.0, -1.0, 0.0,
+        -1.0,  1.0, 0.0,
+         1.0, -1.0, 0.0,
+        -1.0,  1.0, 0.0,
+         1.0,  1.0, 0.0,
       ]
 
       const positions = new THREE.BufferAttribute(new Float32Array(position), 3)
@@ -140,10 +136,9 @@ export function WebGLShader() {
   }, [])
 
   return (
-    <motion.canvas
+    <canvas
       ref={canvasRef}
-      className="fixed top-0 left-0 w-full h-full block z-0"
-      style={{ scale, opacity }}
+      className="landing-shader-canvas-v2 absolute inset-0 w-full h-full block"
     />
   )
 }

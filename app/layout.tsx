@@ -2,12 +2,12 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Cibi — Web3 & AI Portfolio",
-  description: "Software Engineer, Machine Learning candidate, and GenAI enthusiast from San Francisco. Expertise in React, Next.js, Solidity, and Web3.",
-  keywords: ["web3", "machine learning", "GenAI", "React", "Next.js", "Solidity", "Cibi"],
+  title: "Hardik Kamra — Account Executive & Finance Professional",
+  description: "Account Executive & Finance Professional with 5+ years of experience in GST & TDS compliance, Tally Prime, and Advanced MS Excel. Based in Chandigarh, India.",
+  keywords: ["Hardik Kamra", "Account Executive", "Finance Professional", "GST Compliance", "TDS", "Tally Prime", "MS Excel", "Chandigarh"],
   openGraph: {
-    title: "Cibi — Web3 & AI Portfolio",
-    description: "Software Engineer, Machine Learning candidate, and GenAI enthusiast from San Francisco. Expertise in React, Next.js, Solidity, and Web3.",
+    title: "Hardik Kamra — Account Executive & Finance Professional",
+    description: "Account Executive & Finance Professional with 5+ years of experience in GST & TDS compliance, Tally Prime, and Advanced MS Excel. Based in Chandigarh, India.",
     type: "website",
   },
 };
