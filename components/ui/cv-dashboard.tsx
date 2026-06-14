@@ -426,25 +426,41 @@ function CareerPage() {
           <div className="relative border-l border-white/10 ml-3 space-y-6 pb-2">
             <div className="relative pl-6">
               <div className="absolute w-3 h-3 bg-emerald-400 rounded-full -left-[6.5px] top-1.5 shadow-[0_0_10px_rgba(52,211,153,0.5)]"></div>
-              <div className="text-xs text-emerald-400 font-medium mb-1">July 2021 – Present</div>
-              <h4 className="font-bold text-sm">Accountant</h4>
-              <p className="text-xs text-white/70 mt-1">K.L. Narang & Sons (Hero Motocorp Agency) • Fatehabad, Haryana</p>
+              <div className="text-xs text-emerald-400 font-medium mb-1">July 2025 – Present</div>
+              <h4 className="font-bold text-sm">Account Executive</h4>
+              <p className="text-xs text-white/70 mt-1">Alpha Net • Chandigarh, India</p>
               <ul className="text-xs text-white/50 mt-2 list-disc pl-4 space-y-1">
-                <li>Manage AP/AR, ensuring accurate and timely processing.</li>
-                <li>Verify invoices with GST rules and perform reconciliations.</li>
-                <li>Process payroll accurately for the organization.</li>
-                <li>Prepare and file GST, TDS, and other statutory returns.</li>
+                <li>Performed daily Bank Reconciliation Statements (BRS) ensuring zero discrepancies in cash flow reporting.</li>
+                <li>Created and managed invoices for 100+ clients; maintained AP ledger with timely vendor disbursements.</li>
+                <li>Prepared monthly expense sheets, asset registers, TDS computation sheets, and GST reconciliation reports.</li>
+                <li>Processed end-of-month accrual entries and coordinated payroll & attendance management.</li>
+                <li>Ensured 100% compliance with GST and TDS filing deadlines, eliminating penalty risk.</li>
               </ul>
             </div>
 
             <div className="relative pl-6">
               <div className="absolute w-3 h-3 bg-white/20 rounded-full -left-[6.5px] top-1.5"></div>
-              <div className="text-xs text-white/50 font-medium mb-1">Oct 2019 – April 2021</div>
-              <h4 className="font-bold text-sm">Accountant</h4>
-              <p className="text-xs text-white/70 mt-1">M/s. Balaji Plastic (Manufacturing) • Fatehabad, Haryana</p>
+              <div className="text-xs text-white/50 font-medium mb-1">February 2021 – July 2025</div>
+              <h4 className="font-bold text-sm">Account Executive (Accountant)</h4>
+              <p className="text-xs text-white/70 mt-1">Base39 Mobile Communication • Sector-22, Chandigarh</p>
               <ul className="text-xs text-white/50 mt-2 list-disc pl-4 space-y-1">
-                <li>Managed daily accounting entries and ledger maintenance.</li>
-                <li>Handled bank reconciliations and cash flow tracking.</li>
+                <li>Managed full-cycle accounts payable and receivable for 50+ vendors and 100+ clients.</li>
+                <li>Achieved 10% improvement in cash inflow monitoring by streamlining GST summaries and collection records.</li>
+                <li>Reconciled bank statements weekly; improved month-end closing process for accurate GST return filing.</li>
+                <li>Prepared monthly and year-end closing statements; maintained daily stock reports.</li>
+                <li>Filed GST returns and handled statutory compliance, ensuring 100% deadline adherence.</li>
+              </ul>
+            </div>
+
+            <div className="relative pl-6">
+              <div className="absolute w-3 h-3 bg-white/20 rounded-full -left-[6.5px] top-1.5"></div>
+              <div className="text-xs text-white/50 font-medium mb-1">January 2020 – January 2021</div>
+              <h4 className="font-bold text-sm">Junior Accountant</h4>
+              <p className="text-xs text-white/70 mt-1">Hopnext Wellness Pvt Ltd • Bathinda, India</p>
+              <ul className="text-xs text-white/50 mt-2 list-disc pl-4 space-y-1">
+                <li>Reduced report generation time by 20% while ensuring 100% compliance with all reporting deadlines.</li>
+                <li>Handled GST and TDS payments; reviewed and reconciled monthly-end totals.</li>
+                <li>Coordinated timely vendor, client, and account-holder payments.</li>
               </ul>
             </div>
           </div>
