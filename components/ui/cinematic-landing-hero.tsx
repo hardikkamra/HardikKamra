@@ -192,15 +192,15 @@ export function CinematicHero({
   const storySteps = [
     {
       heading: "5+ Years Experience.",
-      description: "Progressive experience as an Accountant at K.L. Narang & Sons and M/s. Balaji Plastic, managing full-cycle accounts payable, receivable, and statutory returns.",
+      description: "Progressive experience as an Account Executive at Alpha Net and Base39 Mobile Communication, managing full-cycle accounts payable, receivable, and statutory returns.",
       metricValue: 5,
       metricLabel: "Years Exp.",
-      badge1Title: "K.L. Narang",
-      badge1Subtitle: "Accountant",
-      badge1Icon: "🏍️",
-      badge2Title: "Balaji Plastic",
-      badge2Subtitle: "Accountant",
-      badge2Icon: "🏭",
+      badge1Title: "Alpha Net",
+      badge1Subtitle: "Account Executive",
+      badge1Icon: "🌐",
+      badge2Title: "Base39",
+      badge2Subtitle: "Account Executive",
+      badge2Icon: "📱",
     },
     {
       heading: "Cash Flow Improvement.",
