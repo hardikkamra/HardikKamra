@@ -470,23 +470,12 @@ function CareerPage() {
           <div className="space-y-6">
             <div className="p-4 rounded-xl bg-white/5 border border-white/5 flex gap-4 items-start">
               <div className="w-10 h-10 rounded-full bg-blue-500/10 flex items-center justify-center flex-shrink-0 mt-1">
-                <span className="text-blue-400 font-bold">PG</span>
+                <span className="text-blue-400 font-bold">UG</span>
               </div>
               <div>
-                <h4 className="font-bold text-sm">Post-Graduation</h4>
-                <p className="text-xs text-white/70 mt-0.5">IGNOU</p>
-                <p className="text-xs text-white/40 mt-1">Currently pursuing to further enhance financial expertise and theoretical knowledge.</p>
-              </div>
-            </div>
-
-            <div className="p-4 rounded-xl bg-white/5 border border-white/5 flex gap-4 items-start">
-              <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0 mt-1">
-                <span className="text-white/70 font-bold">UG</span>
-              </div>
-              <div>
-                <h4 className="font-bold text-sm">Graduation</h4>
-                <p className="text-xs text-white/70 mt-0.5">MM College (CBLU)</p>
-                <div className="inline-block mt-2 px-2 py-1 bg-white/10 rounded text-[10px] font-medium">Completed</div>
+                <h4 className="font-bold text-sm">Bachelor of Science (General)</h4>
+                <p className="text-xs text-white/70 mt-0.5">IGNOU, Delhi</p>
+                <p className="text-xs text-white/40 mt-1">Currently pursuing to further enhance theoretical knowledge.</p>
               </div>
             </div>
 
@@ -495,8 +484,19 @@ function CareerPage() {
                 <span className="text-white/70 font-bold">XII</span>
               </div>
               <div>
-                <h4 className="font-bold text-sm">12th Standard</h4>
-                <p className="text-xs text-white/70 mt-0.5">HBSE Board</p>
+                <h4 className="font-bold text-sm">Senior Secondary (Medical Stream)</h4>
+                <p className="text-xs text-white/70 mt-0.5">M.S.D Senior Secondary School, Bathinda</p>
+                <div className="inline-block mt-2 px-2 py-1 bg-white/10 rounded text-[10px] font-medium">Completed</div>
+              </div>
+            </div>
+
+            <div className="p-4 rounded-xl bg-white/5 border border-white/5 flex gap-4 items-start">
+              <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0 mt-1">
+                <span className="text-white/70 font-bold">X</span>
+              </div>
+              <div>
+                <h4 className="font-bold text-sm">Secondary Education</h4>
+                <p className="text-xs text-white/70 mt-0.5">R.B.D.A.V. Senior Secondary School, Bathinda</p>
                 <div className="inline-block mt-2 px-2 py-1 bg-white/10 rounded text-[10px] font-medium">Completed</div>
               </div>
             </div>
